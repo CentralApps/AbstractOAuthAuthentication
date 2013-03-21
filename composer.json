@@ -1,0 +1,13 @@
+{
+    "name": "centralapps/authentication-abstract-oauth",
+    "type": "library",
+    "description": "Decorators and abstract oAuth interfaces for oAuth based authentication providers",
+    "keywords": ["authentication", "oauth", "provider"],
+    "require": {
+        "php": ">=5.3.0",
+        "centralapps/authentication": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "CentralApps\\Authentication": "" }
+    }
+}
