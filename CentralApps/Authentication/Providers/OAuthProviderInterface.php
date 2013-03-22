@@ -9,4 +9,7 @@ interface OAuthProviderInterface extends ProviderInterface
 	public function getLoginUrl();
 	public function getRegisterUrl();
 	public function getAttachUrl();
+	public function handleAttach();
+	public function isAttemptingToAttach();
+	public function isAttemptingToRegister();
 }
