@@ -18,12 +18,22 @@ class OAuthProcessorDecorator
 	
 	public function isAttemptingToAttach()
 	{
-		$providers = array(); // TODO: need to find a nice way of getting these from the processor
+		$providers = clone $this->processor->getProviders();
+		while($providers->valid()) {
+			$provider = $providers->current();
+			if($provider instanceof Providers\OAuthProviderInterface) {
+				if($provider->isAttemptingToAttach()) {
+					$this->relatedProvider = $provider;
+					return true;
+				}
+			}
+			$providers->next();
+		}
 		return false;
 	}
 	
 	public function handleAttach()
 	{
-		
+		$this->relatedProvider->handleAttach();
 	}
 }
