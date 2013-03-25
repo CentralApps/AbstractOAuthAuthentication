@@ -31,9 +31,35 @@ class OAuthProcessorDecorator
 		}
 		return false;
 	}
+    
+    public function isAttemptingToRegister()
+    {
+        $providers = clone $this->processor->getProviders();
+        while($providers->valid()) {
+            $provider = $providers->current();
+            if($provider instanceof Providers\OAuthProviderInterface) {
+                if($provider->isAttemptingToRegister()) {
+                    $this->relatedProvider = $provider;
+                    return true;
+                }
+            }
+            $providers->next();
+        }
+        return false;
+    }
 	
 	public function handleAttach()
 	{
 		$this->relatedProvider->handleAttach();
 	}
+    
+    public function handleRegister()
+    {
+        $this->relatedProvider->handleRegister();
+    }
+    
+    public function getRelatedProvider()
+    {
+        return $this->relatedProvider;
+    }
 }
