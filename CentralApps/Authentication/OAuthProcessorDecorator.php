@@ -50,12 +50,12 @@ class OAuthProcessorDecorator
 	
 	public function handleAttach()
 	{
-		$this->relatedProvider->handleAttach();
+		return $this->relatedProvider->handleAttach();
 	}
     
     public function handleRegister()
     {
-        $this->relatedProvider->handleRegister();
+        return $this->relatedProvider->handleRegister();
     }
     
     public function getRelatedProvider()
