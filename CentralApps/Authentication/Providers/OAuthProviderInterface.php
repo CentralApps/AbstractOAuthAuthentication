@@ -15,4 +15,5 @@ interface OAuthProviderInterface extends ProviderInterface
 	public function isAttemptingToRegister();
     public function verifyTokens();
     public function getExternalUsername();
+    public function getExternalDisplayName();
 }
